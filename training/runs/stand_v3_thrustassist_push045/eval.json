@@ -1,0 +1,30 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 1.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.05999999865889549,
+ "thermal_ratio_max": 0.5175138115882874,
+ "success_rate": 1.0,
+ "sway_cm_mean": 21.41674041748047,
+ "max_tilt_deg_p95": 7.156267166137695,
+ "task": "stand",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/stand_v3_thrustassist_push045/params.pkl",
+ "env_overrides": {
+  "episode_length": 1500,
+  "push.impulse": [
+   0.45,
+   0.45
+  ],
+  "fans_enabled": true,
+  "throttle_center": 0.0,
+  "throttle_gain": 1.0,
+  "push.interval": [
+   3.0,
+   4.0
+  ],
+  "naconmax": 6144
+ }
+}

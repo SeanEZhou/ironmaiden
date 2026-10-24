@@ -1,0 +1,23 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 0.4,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.3199999928474426,
+ "thermal_ratio_max": 0.3047863841056824,
+ "success_rate": 0.4,
+ "sway_cm_mean": 5.4588494300842285,
+ "max_tilt_deg_p95": 40.666908264160156,
+ "task": "stand",
+ "controller": "classical",
+ "params": null,
+ "env_overrides": {
+  "episode_length": 1500,
+  "push.impulse": [
+   0.0,
+   0.15
+  ],
+  "naconmax": 6144
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 0.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.5200000405311584,
+ "thermal_ratio_max": 0.23967932164669037,
+ "success_rate": 0.0,
+ "distance_m_mean": -0.24855490028858185,
+ "speed_mps_mean": -0.37054883929195087,
+ "steps_per_s_per_pod": 1.1021666666666665,
+ "pod_clearance_mm_mean": 55.273582458496094,
+ "slip_fraction_of_travel": 0.5564286708831787,
+ "task": "walk",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/walk_v1/params.pkl",
+ "env_overrides": {
+  "episode_length": 1500,
+  "cmd.vx": [
+   0.15,
+   0.15
+  ],
+  "cmd.vy": [
+   0.0,
+   0.0
+  ],
+  "cmd.wz": [
+   0.0,
+   0.0
+  ],
+  "cmd.zero_prob": 0.0,
+  "cmd.resample": [
+   100.0,
+   100.0
+  ],
+  "push.impulse": [
+   0.0,
+   0.15
+  ],
+  "naconmax": 6144
+ }
+}

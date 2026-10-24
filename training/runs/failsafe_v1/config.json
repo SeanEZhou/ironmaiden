@@ -1,0 +1,123 @@
+{
+ "task": "failsafe",
+ "name": "failsafe_v1",
+ "steps": 250000000.0,
+ "num_envs": 8192,
+ "seed": 0,
+ "lr": 0.0003,
+ "entropy": 0.003,
+ "lr_schedule": "ADAPTIVE_KL",
+ "desired_kl": 0.01,
+ "discount": 0.99,
+ "unroll": 20,
+ "batch": 256,
+ "minibatches": 32,
+ "updates": 4,
+ "policy": "512,256,128",
+ "value": "512,256,128",
+ "evals": 12,
+ "restore": "training/runs/transition_v4/params.pkl",
+ "env": "{\"reward.scales.impact\": -8.0}",
+ "init_std": 1.0,
+ "env_config": {
+  "action_scale": 0.35,
+  "cmd": {
+   "resample": [
+    2.0,
+    4.0
+   ],
+   "v_air": [
+    -1.0,
+    1.0
+   ],
+   "vx": [
+    -0.15,
+    0.25
+   ],
+   "vy": [
+    -0.1,
+    0.1
+   ],
+   "wz": [
+    -0.4,
+    0.4
+   ],
+   "z_hover": [
+    0.35,
+    0.9
+   ],
+   "zero_prob": 0.25
+  },
+  "ctrl_dt": 0.02,
+  "dr_level": 1.0,
+  "episode_length": 1300,
+  "fans_enabled": true,
+  "gait_hz": 1.0,
+  "impl": "warp",
+  "naconmax": 196608,
+  "njmax": 128,
+  "noise_level": 1.0,
+  "push": {
+   "enable": true,
+   "impulse": [
+    0.0,
+    0.5
+   ],
+   "interval": [
+    3.0,
+    6.0
+   ]
+  },
+  "reward": {
+   "scales": {
+    "action_rate": -0.02,
+    "alive": 1.0,
+    "alt": 2.5,
+    "angvel": -0.02,
+    "ground_stand": 1.0,
+    "ground_thrust": -4.0,
+    "idle_on_ground": 0.5,
+    "impact": -8.0,
+    "pos": 1.0,
+    "pose": 0.3,
+    "power": -0.05,
+    "termination": -50.0,
+    "thermal": -0.5,
+    "thrust_sat": -0.5,
+    "upright": 1.5,
+    "vz": 1.0
+   }
+  },
+  "sim_dt": 0.002,
+  "sweep": {
+   "com_x": 0.0,
+   "fan0_scale": 1.0,
+   "friction": 1.0,
+   "ge_a": -99.0,
+   "payload_frac": 0.0,
+   "tau_extra": 0.0,
+   "thrust_scale": 1.0
+  },
+  "swing_height": 0.04,
+  "swing_sigma": 0.02,
+  "task": "transition",
+  "termination_tilt_deg": 60.0,
+  "throttle_center": 0.5,
+  "throttle_gain": 0.5,
+  "transition": {
+   "climb": 2.0,
+   "descend": 3.0,
+   "fail_descent": 0.4,
+   "fail_prob": 1.0,
+   "hover": 5.0,
+   "stand_pre": [
+    1.5,
+    3.0
+   ],
+   "z": [
+    0.4,
+    0.7
+   ]
+  }
+ }
+}

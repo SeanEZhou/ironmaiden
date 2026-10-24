@@ -1,0 +1,47 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 0.99,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.10099989920854568,
+ "thermal_ratio_max": 0.8609559535980225,
+ "success_rate": 1.0,
+ "distance_m_mean": 4.164836406707764,
+ "speed_mps_mean": 0.13920938066964922,
+ "steps_per_s_per_pod": 2.1006666666666667,
+ "pod_clearance_mm_mean": 41.5831413269043,
+ "slip_fraction_of_travel": 0.13214078545570374,
+ "task": "walk",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/m5_walk_v4_fric13/params.pkl",
+ "env_overrides": {
+  "episode_length": 1500,
+  "cmd.vx": [
+   0.15,
+   0.15
+  ],
+  "cmd.vy": [
+   0.0,
+   0.0
+  ],
+  "cmd.wz": [
+   0.0,
+   0.0
+  ],
+  "cmd.zero_prob": 0.0,
+  "cmd.resample": [
+   100.0,
+   100.0
+  ],
+  "push.impulse": [
+   0.0,
+   0.15
+  ],
+  "gait_hz": 0.7,
+  "swing_height": 0.05,
+  "swing_sigma": 0.02,
+  "sweep.friction": 1.3,
+  "naconmax": 6144
+ }
+}

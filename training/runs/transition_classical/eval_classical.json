@@ -1,0 +1,23 @@
+{
+ "trials": 100,
+ "steps": 1300,
+ "dt": 0.02,
+ "no_fall_rate": 0.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.9409995675086975,
+ "thermal_ratio_max": 0.7905299663543701,
+ "success_rate": 0.0,
+ "liftoff_rate": 0.65,
+ "hover_alt_ok_rate": 0.95,
+ "landed_rate": 0.86,
+ "impact_mps_p95": 4.3254265785217285,
+ "impact_ok_rate": 0.03,
+ "task": "transition",
+ "controller": "classical",
+ "params": null,
+ "env_overrides": {
+  "episode_length": 1300,
+  "push.enable": false,
+  "naconmax": 6144
+ }
+}

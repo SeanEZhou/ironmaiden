@@ -1,0 +1,22 @@
+{
+ "trials": 100,
+ "steps": 1300,
+ "dt": 0.02,
+ "no_fall_rate": 0.98,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.11999998986721039,
+ "thermal_ratio_max": 0.49819016456604004,
+ "success_rate": 0.94,
+ "landed_rate": 1.0,
+ "impact_mps_p50": 0.1345060169696808,
+ "impact_mps_p95": 1.4308509826660156,
+ "soft_landing_rate": 0.96,
+ "task": "failsafe",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/failsafe_v1/params.pkl",
+ "env_overrides": {
+  "episode_length": 1300,
+  "push.enable": false,
+  "naconmax": 6144
+ }
+}

@@ -1,0 +1,243 @@
+# Component catalog for the EDF humanoid feasibility study.
+# Every entry carries `status`:
+#   verified   - number read from a manufacturer/retailer page on `checked` date (see `source`)
+#   assumption - engineering estimate; must be measured before any hardware claim
+# Prices in USD as listed at time of check.
+
+checked: 2026-10-23
+
+edf:
+  # JP Hobby units: MotionRC publishes per-voltage bench test points (free-stream, bench duct).
+  jp70_6s:
+    kv: 2250
+    name: JP Hobby 70mm 12-Blade EDF 4S-6S Power System w/ 2250Kv Motor
+    part: JPH6007-100
+    source: https://motionrc.com/products/jp-hobby-70mm-12-blade-edf-4s-6s-power-system-w-2250kv-motor-jph6007-100
+    status: verified
+    rotor_d_mm: 70
+    od_mm: 73
+    od_lip_mm: 83
+    length_mm: {value: 80, status: assumption}     # not listed; est. from 3055 outrunner + 70mm housing
+    mass_g: 250                                     # incl. motor
+    cells: 6
+    rotation: [normal]                              # no reverse-rotation version found
+    test_points:   # [volts, amps, thrust_kg, watts]
+      - [22.2, 76.6, 2.35, 1725]
+      - [24.0, 88.2, 2.67, 2112]
+      - [25.2, 95.0, 2.91, 2394]
+    price_usd: 179.99
+  jp80_6s:
+    kv: 2200
+    name: JP Hobby 80mm 12-Blade EDF 4S-6S Power System w/2200Kv Motor
+    part: JPH6007-101
+    source: https://motionrc.com/products/jp-hobby-80mm-12-blade-edf-4s-6s-power-system-w-2200kv-motor-jph6007-101
+    status: verified
+    rotor_d_mm: 80
+    od_mm: 81
+    od_lip_mm: 93
+    length_mm: {value: 88, status: assumption}
+    # Listed 250 g (identical to the 70mm unit) looks like a copy error; carry a conservative override.
+    mass_g: {value: 320, status: assumption, listed: 250}
+    cells: 6
+    rotation: [normal]
+    test_points:
+      - [22.2, 92.0, 2.90, 2287]
+      - [24.0, 103.0, 3.30, 2808]
+    price_usd: 214.99
+  jp90_8s:
+    kv: 1400
+    name: JP Hobby 90mm 12-Blade EDF 8S Power System w/1400Kv Motor
+    part: JPH6007-103
+    source: https://motionrc.com/products/jp-hobby-90mm-12-blade-edf-8s-power-system-w-1400kv-motor-jph6007-103
+    status: verified
+    rotor_d_mm: 90
+    od_mm: 92.5
+    od_lip_mm: 110
+    length_mm: {value: 100, status: assumption}
+    mass_g: 450
+    cells: 8
+    rotation: [normal]
+    test_points:
+      - [30.0, 105.0, 4.13, 3150]
+      - [31.0, 110.0, 4.38, 3410]
+      - [32.0, 118.0, 4.66, 3776]
+    price_usd: 279.99
+  jp90_12s:
+    kv: 1080
+    name: JP Hobby 90mm 12-Blade EDF 12S Power System w/1080Kv Motor
+    part: JPH6007-104
+    source: https://motionrc.com/products/jp-hobby-90mm-12-blade-edf-12s-power-system-w-1080kv-motor-jph6007-104
+    status: verified
+    rotor_d_mm: 90
+    od_mm: 92.5
+    od_lip_mm: 110
+    length_mm: {value: 100, status: assumption}
+    mass_g: 450
+    cells: 12
+    rotation: [normal]
+    test_points:
+      - [44.4, 102.0, 5.35, 4529]
+      - [46.8, 109.0, 5.69, 5101]
+      - [48.0, 117.0, 6.103, 5616]
+    price_usd: 299.99
+  jp105_12s:
+    kv: 875
+    name: JP Hobby 105mm 12-Blade EDF 12S Power System w/875Kv Motor
+    part: JPH6007-105
+    source: https://motionrc.com/products/jp-hobby-105mm-12-blade-edf-12s-power-system-w-875kv-motor-jph6007-105
+    status: verified
+    rotor_d_mm: 105
+    od_mm: 107
+    od_lip_mm: 120
+    length_mm: {value: 112, status: assumption}
+    mass_g: 550
+    cells: 12
+    rotation: [normal]
+    test_points:
+      - [44.4, 114.0, 6.56, 5062]   # page lists 4528.8 W but 44.4 V x 114 A = 5062 W; use the larger (conservative)
+      - [48.0, 130.0, 7.50, 5280]
+    price_usd: 379.00
+  fw64_6s:
+    kv: 2500
+    name: Freewing 64mm 12-Blade EDF 6S Power System w/ 2949-2500Kv Inrunner Motor
+    part: E7209
+    source: https://motionrc.com/products/freewing-64mm-12-blade-edf-6s-power-system-w-2949-2500kv-inrunner-motor-e7209
+    status: partial      # current (55 A max) and 6S verified; thrust/mass NOT published
+    rotor_d_mm: 64
+    od_mm: {value: 68, status: assumption}
+    od_lip_mm: {value: 76, status: assumption}
+    length_mm: {value: 75, status: assumption}
+    mass_g: {value: 230, status: assumption}
+    cells: 6
+    rotation: [normal, reverse]
+    test_points:
+      # ASSUMPTION: 55 A x 22.2 V = 1221 W at ~1.40 g/W (between JP70 and FW80 published g/W)
+      - [22.2, 55.0, 1.71, 1221]
+    price_usd: 47.99
+
+esc:
+  flyfun120_v5:
+    name: Hobbywing FlyFun 120A V5
+    part: HWI30201400
+    source: https://www.bigboyswithcooltoys.ca/products/hwi30201400-flyfun-120a-6s-v5-esc-optimized-for-advanced-users
+    status: verified     # mass/dims/current; 8S input range conflicts between listings -> verify for 8S
+    mass_g: 93
+    dims_mm: [77.2, 34.6, 19.2]
+    cont_a: 120
+    peak_a: 150
+    max_cells: {value: 8, status: assumption}
+    price_usd: {value: 110, status: assumption}
+
+  flyfun110_hv_v5:
+    name: Hobbywing FlyFun 110A HV V5 (6-14S)
+    part: FlyFun-110A-HV-V5
+    source: https://lindinger.at/en/RC-Electronics/Drive-Set/Speed-Controllers/HOBBYWING-FLYFUN-V5-110A-CONTROLLER-6-14S-SBEC/9759726
+    status: verified
+    mass_g: 180
+    dims_mm: [92.7, 45.6, 27]
+    cont_a: 110
+    peak_a: {value: 130, status: assumption}
+    max_cells: 14
+    price_usd: {value: 200, status: assumption}
+
+battery:
+  tattu_6s_6000_35c:
+    name: Tattu 6000mAh 6S 35C LiPo
+    source: https://www.getfpv.com/tattu-6000mah-6s-35c-lipo-battery.html
+    status: verified
+    cells: 6
+    cap_ah: 6.0
+    c_cont: 35
+    mass_g: 835
+    dims_mm: [146, 47, 60]
+    price_usd: {value: 120, status: assumption}
+  cnhl_6s_6000_65c:
+    name: CNHL Black Series 6000mAh 6S 65C LiPo (EC5)
+    source: https://megadron.pl/en/products/cnhl-6000mah-22-2v-6s-65c-black-ec5-battery-29817.html
+    status: verified
+    cells: 6
+    cap_ah: 6.0
+    c_cont: 65
+    mass_g: 1000
+    dims_mm: [155, 46, 64]
+    price_usd: {value: 110, status: assumption}
+  generic_4s_5000_70c:   # two in series for 8S
+    name: 4S 5000mAh 70C LiPo (CNHL/Tattu class)
+    source: null
+    status: assumption
+    cells: 4
+    cap_ah: 5.0
+    c_cont: 70
+    mass_g: 540
+    dims_mm: [155, 48, 36]
+    price_usd: 75
+
+servo:
+  sts3250:
+    source: https://aifitlab.com/products/feetech-sts3250-servo-motor
+    status: verified    # single retailer listing; rated 16 kg-cm (1.57 N m) continuous @12V
+    mass_g: 74.5
+    dims_mm: [24.72, 45.22, 35]
+    stall_nm: 4.9
+    noload_rpm: 75
+    stall_a: 4.2
+    backlash_deg: {value: 0.5, status: assumption}
+    price_usd: {value: 55, status: assumption}
+  # ROBOTIS e-Manual, ratings at 12.0 V. Stall torque is momentary only.
+  xm430_w350:
+    source: https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/
+    status: verified
+    mass_g: 82
+    dims_mm: [28.5, 46.5, 34]
+    stall_nm: 4.1
+    noload_rpm: 46
+    stall_a: 2.3
+    backlash_deg: 0.25
+    price_usd: {value: 290, status: assumption}
+  xm430_w210:
+    source: https://emanual.robotis.com/docs/en/dxl/x/xm430-w210/
+    status: verified
+    mass_g: 82
+    dims_mm: [28.5, 46.5, 34]
+    stall_nm: 3.0
+    noload_rpm: 77
+    stall_a: 2.3
+    backlash_deg: 0.25
+    price_usd: {value: 290, status: assumption}
+  xh540_w270:
+    source: https://emanual.robotis.com/docs/en/dxl/x/xh540-w270
+    status: verified
+    mass_g: 165
+    dims_mm: [33.5, 58.5, 44]
+    stall_nm: 9.9
+    noload_rpm: 39
+    stall_a: 4.9
+    backlash_deg: 0.25
+    price_usd: {value: 500, status: assumption}
+
+# Design-rule assumptions (all must be bench-validated).
+rules:
+  servo_cont_frac: 0.35      # usable continuous torque as fraction of stall (thermal); ROBOTIS: stall is momentary
+  servo_peak_frac: 0.70      # short (<2 s) peak torque fraction
+  servo_speed_at_load: 0.6   # fraction of no-load speed available at continuous torque
+  install_eff: 0.85          # installed/bench thrust (side intake, guard, gimbal gap); band 0.75-0.90
+  install_eff_band: [0.75, 0.90]
+  power_exponent: 1.5        # P ~ T^1.5 fitted to JP70 data (1.54)
+  cell_v_loaded: 3.7         # V/cell under hover load mid-pack (reference for test-point use)
+  cell_v_end: 3.5            # V/cell end of usable capacity
+  usable_frac: 0.75          # usable pack energy (reserve 20% + sag)
+  aux_power_w: 60            # servos holding + FC + BEC losses in hover
+  shell_wall_mm: 1.2
+  shell_density_gcc: 1.27    # PETG
+  shell_rib_factor: 1.35     # bosses, ribs, inserts
+  fastener_frac: 0.05        # of dry mass
+  target_margin: 1.8
+  min_margin: 1.4            # below this: no meaningful control authority
+fc:
+  matek_h743_slim_v3:
+    source: https://www.getfpv.com/mateksys-h743-slim-v3-flight-controller.html
+    status: verified
+    mass_g: 7
+    imu: ICM42688P
+    baro: DPS310
+  other_avionics_g: {value: 70, status: assumption}   # RX, 12V 10A BEC for servo bus, U2D2-class bridge, harness

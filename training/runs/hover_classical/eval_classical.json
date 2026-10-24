@@ -1,0 +1,22 @@
+{
+ "trials": 100,
+ "steps": 1000,
+ "dt": 0.02,
+ "no_fall_rate": 0.99,
+ "peak_actuator_ratio_max": 1.0,
+ "thermal_ratio_max": 1.056377649307251,
+ "success_rate": 0.26,
+ "alt_err_rms_m": 0.13902102410793304,
+ "tilt_deg_p95": 12.252535820007324,
+ "pos_drift_m_mean": 100.59803771972656,
+ "hover_power_kw": 8.802447319030762,
+ "est_flight_time_s": 81.71363830566406,
+ "task": "hover",
+ "controller": "classical",
+ "params": null,
+ "env_overrides": {
+  "episode_length": 1000,
+  "push.enable": false,
+  "naconmax": 6144
+ }
+}

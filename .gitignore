@@ -1,0 +1,17 @@
+# environment
+.venv/
+__pycache__/
+*.pyc
+
+# training artifacts: keep config.json / progress.csv / eval*.json / best.json as evidence,
+# reference weights live in training/policies/
+training/runs/**/params*.pkl
+training/runs/**/train.log
+training/runs/**/*.npz
+training/runs/**/*.mp4
+training/queue/
+
+# generated models (regenerate with models/build_mjcf.py); keep the selected design
+models/edf_humanoid_*.xml
+!models/edf_humanoid_E2_88cm_jp90_12s_65c.xml
+!models/edf_humanoid_E2_88cm_jp90_12s_65c_train.xml

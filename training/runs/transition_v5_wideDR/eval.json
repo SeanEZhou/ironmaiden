@@ -1,0 +1,25 @@
+{
+ "trials": 100,
+ "steps": 1300,
+ "dt": 0.02,
+ "no_fall_rate": 1.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.05999999865889549,
+ "thermal_ratio_max": 0.5490995645523071,
+ "unassisted_stand_rate": 1.0,
+ "final_stand_thrust_frac_mean": 0.013225000351667404,
+ "success_rate": 0.92,
+ "liftoff_rate": 1.0,
+ "hover_alt_ok_rate": 1.0,
+ "landed_rate": 1.0,
+ "impact_mps_p95": 1.2405543327331543,
+ "impact_ok_rate": 0.92,
+ "task": "transition",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/transition_v5_wideDR/params.pkl",
+ "env_overrides": {
+  "episode_length": 1300,
+  "push.enable": false,
+  "naconmax": 6144
+ }
+}

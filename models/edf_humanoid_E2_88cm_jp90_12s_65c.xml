@@ -1,0 +1,317 @@
+<mujoco model="edf_humanoid_E2_88cm_jp90_12s_65c">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.001" integrator="implicitfast" gravity="0 0 -9.81"/>
+  <visual><global offwidth="1600" offheight="1600"/><quality shadowsize="4096"/><headlight ambient="0.35 0.35 0.35" diffuse="0.5 0.5 0.5"/></visual>
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.82 0.84 0.86" rgb2="0.74 0.76 0.79" width="512" height="512"/>
+    <material name="floor" texture="grid" texrepeat="8 8" reflectance="0.05"/>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.86 0.90 0.95" rgb2="0.55 0.62 0.72" width="256" height="256"/>
+    <material name="white" rgba="0.94 0.94 0.92 1" specular="0.5" shininess="0.6"/>
+    <material name="red" rgba="0.72 0.07 0.10 1" specular="0.4" shininess="0.5"/>
+    <material name="blue" rgba="0.08 0.18 0.50 1" specular="0.4" shininess="0.5"/>
+    <material name="steel" rgba="0.30 0.32 0.36 1" specular="0.9" shininess="0.9" reflectance="0.2"/>
+    <material name="dark" rgba="0.10 0.10 0.12 1" specular="0.3"/>
+    <material name="visor" rgba="0.12 0.14 0.20 1" specular="1" shininess="1" reflectance="0.3"/>
+    <material name="hair" rgba="0.93 0.80 0.45 1" specular="0.2"/>
+    <material name="internal" rgba="0.2 0.6 0.3 0.6"/>
+  </asset>
+  <default>
+    <joint damping="0.4" frictionloss="0.03" limited="true"/>
+    <geom contype="0" conaffinity="0" condim="3" friction="0.8 0.02 0.001" solref="0.005 1"/>
+    <default class="internal"><geom group="3" material="internal"/></default>
+    <default class="shell"><geom group="1" material="white" contype="2" conaffinity="1"/></default>
+    <default class="livery"><geom group="2" mass="0" contype="0" conaffinity="0"/></default>
+    <site group="4" rgba="1 0.5 0 1" size="0.008"/>
+  </default>
+  <worldbody>
+    <light pos="1.5 -1.5 3" dir="-0.5 0.5 -1" diffuse="0.7 0.7 0.7" castshadow="true"/>
+    <light pos="-2 2 2.5" dir="0.6 -0.6 -1" diffuse="0.3 0.3 0.35" castshadow="false"/>
+    <geom name="floor" type="plane" size="0 0 0.05" material="floor" contype="1" conaffinity="1"/>
+    <body name="torso" pos="0 0 0.4796">
+      <freejoint name="root"/>
+      <site name="imu" pos="-0.0176 0 0.264"/>
+      <geom name="torso_pelvis_shell" class="shell" type="ellipsoid" size="0.05104 0.07568 0.0495" pos="0 0 0.0198" mass="0.088209"/>
+      <geom name="torso_waist_shell" class="shell" type="ellipsoid" size="0.03872 0.04928 0.07106" pos="0 0 0.09592" mass="0.07156"/>
+      <geom name="torso_chest_shell" class="shell" type="ellipsoid" size="0.0528 0.07744 0.0924" pos="0 0 0.2002" mass="0.14137"/>
+      <geom name="torso_head_shell" class="shell" type="ellipsoid" size="0.043366 0.039424 0.053222" pos="0 0 0.33968" mass="0.082787"/>
+      <geom name="torso_spine_spar" class="shell" type="capsule" size="0.006 0.1265" pos="0 0 0.1265" mass="0.090514"/>
+      <geom name="torso_battery_0" class="internal" type="box" size="0.023 0.032 0.0775" pos="0 -0.034 0.13575" mass="1"/>
+      <geom name="torso_battery_1" class="internal" type="box" size="0.023 0.032 0.0775" pos="0 0.034 0.13575" mass="1"/>
+      <geom name="torso_fc_avionics" class="internal" type="box" size="0.02 0.02 0.01" pos="-0.0264 0 0.2376" mass="0.077"/>
+      <geom name="torso_pdb_main_leads" class="internal" type="box" size="0.02 0.03 0.01" pos="0.0176 0 0.066" mass="0.14"/>
+      <geom name="torso_l_servo_hip_roll" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 0.038016 -3.4694e-18" mass="0.33"/>
+      <geom name="torso_l_servo_shoulder_pitch" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 0.07216 0.253" mass="0.0745"/>
+      <geom name="torso_r_servo_hip_roll" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 -0.038016 -3.4694e-18" mass="0.33"/>
+      <geom name="torso_r_servo_shoulder_pitch" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 -0.07216 0.253" mass="0.0745"/>
+      <geom name="torso_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.17502"/>
+      <geom class="livery" type="ellipsoid" size="0.053328 0.078214 0.014784" pos="0 0 0.1771" material="blue"/>
+      <geom class="livery" type="ellipsoid" size="0.051216 0.075117 0.00462" pos="0 0 0.15585" material="red"/>
+      <geom class="livery" type="ellipsoid" size="0.039882 0.050758 0.0085272" pos="0 0 0.056837" material="steel"/>
+      <geom class="livery" type="ellipsoid" size="0.018214 0.033905 0.015967" pos="0.026887 0 0.34234" material="visor"/>
+      <geom class="livery" type="ellipsoid" size="0.01301 0.01577 0.0063867" pos="0.032091 0 0.31413" material="steel"/>
+      <geom class="livery" type="capsule" size="0.01408 0.01056" pos="0 0 0.27942" material="steel"/>
+      <geom class="livery" type="ellipsoid" size="0.046836 0.044155 0.037256" pos="-0.0043366 0 0.35884" material="hair"/>
+      <geom class="livery" type="ellipsoid" size="0.034693 0.044943 0.032998" pos="-0.01301 0 0.33329" material="hair"/>
+      <geom class="livery" type="ellipsoid" size="0.01301 0.03351 0.011709" pos="0.030356 0 0.36736" euler="0 0.35 0" material="hair"/>
+      <site name="com_ref" pos="0 0 0"/>
+      <body name="l_hip" pos="0 0.06336 -0.0176">
+        <joint name="l_hip_roll" axis="1 0 0" range="-0.43633 0.61087" armature="0.04"/>
+        <geom name="l_hip_servo_hip_pitch" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 0 0" mass="0.33"/>
+        <geom name="l_hip_hip_bracket" class="shell" type="sphere" size="0.02464" pos="0 0 0" mass="0.037714" material="steel"/>
+        <geom name="l_hip_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.018386"/>
+        <body name="l_thigh" pos="0 0 0">
+          <joint name="l_hip_pitch" axis="0 1 0" range="-1.7453 0.5236" armature="0.04"/>
+          <geom name="l_thigh_thigh_shell" class="shell" type="capsule" size="0.02992 0.080256" pos="0 0 -0.10138" mass="0.076922"/>
+          <geom name="l_thigh_servo_knee" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 0 -0.18163" mass="0.33"/>
+          <geom name="l_thigh_wire_leg_thigh" class="internal" type="capsule" size="0.006 0.08448" pos="0.01 0 -0.1056" mass="0.062696"/>
+          <geom name="l_thigh_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.023481"/>
+          <geom class="livery" type="cylinder" size="0.031117 0.0048154" pos="0 0 -0.057235" material="red"/>
+          <geom class="livery" type="cylinder" size="0.031117 0.0048154" pos="0 0 -0.073286" material="blue"/>
+          <body name="l_pod_leg" pos="0 0 -0.2112">
+            <joint name="l_knee" axis="0 1 0" range="0 2.2689" armature="0.04"/>
+            <geom name="l_pod_leg_knee_yoke" class="shell" type="sphere" size="0.02288" pos="0 0 -0.00352" mass="0.050286" material="steel"/>
+            <geom name="l_pod_leg_pod_shell" class="shell" type="cylinder" size="0.0592 0.07475" pos="0 0 -0.09235" mass="0.15445"/>
+            <geom name="l_pod_leg_intake_bellmouth_guard" class="shell" type="cylinder" size="0.05328 0.004" pos="0 0 -0.0216" mass="0.049592"/>
+            <geom name="l_pod_leg_esc" class="internal" type="box" size="0.017 0.01 0.038" pos="-0.03552 0 -0.0846" mass="0.18"/>
+            <geom name="l_pod_leg_skirt_ring" class="shell" type="cylinder" size="0.0592 0.006" pos="0 0 -0.214" mass="0.018367" material="steel"/>
+            <geom name="l_pod_leg_skirt_strut_0" class="shell" type="box" size="0.004 0.009 0.02645" pos="0.040186 0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="l_pod_leg_skirt_strut_1" class="shell" type="box" size="0.004 0.009 0.02645" pos="-0.040186 0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="l_pod_leg_skirt_strut_2" class="shell" type="box" size="0.004 0.009 0.02645" pos="-0.040186 -0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="l_pod_leg_skirt_strut_3" class="shell" type="box" size="0.004 0.009 0.02645" pos="0.040186 -0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="l_pod_leg_gimbal_servo_x" class="internal" type="box" size="0.014 0.017 0.023" pos="0.036704 0 -0.0746" mass="0.0745"/>
+            <geom name="l_pod_leg_gimbal_servo_y" class="internal" type="box" size="0.014 0.017 0.023" pos="0 0.036704 -0.0746" mass="0.0745"/>
+            <geom name="l_pod_leg_pad_0" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.050912 0 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_0" class="shell" type="sphere" size="0.008" pos="0.050912 0 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_1" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.036 0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_1" class="shell" type="sphere" size="0.008" pos="0.036 0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_2" class="shell" type="box" size="0.008 0.008 0.0114" pos="3.1175e-18 0.050912 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_2" class="shell" type="sphere" size="0.008" pos="3.1175e-18 0.050912 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_3" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.036 0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_3" class="shell" type="sphere" size="0.008" pos="-0.036 0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_4" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.050912 6.2349e-18 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_4" class="shell" type="sphere" size="0.008" pos="-0.050912 6.2349e-18 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_5" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.036 -0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_5" class="shell" type="sphere" size="0.008" pos="-0.036 -0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_6" class="shell" type="box" size="0.008 0.008 0.0114" pos="-9.3524e-18 -0.050912 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_6" class="shell" type="sphere" size="0.008" pos="-9.3524e-18 -0.050912 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_pad_7" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.036 -0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="l_pod_leg_padtip_7" class="shell" type="sphere" size="0.008" pos="0.036 -0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="l_pod_leg_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.034444"/>
+            <geom class="livery" type="cylinder" size="0.05991 0.007475" pos="0 0 -0.05946" material="red"/>
+            <geom class="livery" type="cylinder" size="0.05991 0.0037375" pos="0 0 -0.0774" material="blue"/>
+            <geom class="livery" type="cylinder" size="0.050912 0.003" pos="0 0 -0.0166" material="dark"/>
+            <geom class="livery" type="cylinder" size="0.060976 0.004485" pos="0 0 -0.022085" material="steel"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="0.051269 0.0296 -0.03853" euler="0 0 0.5236" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="3.625e-18 0.0592 -0.03853" euler="0 0 1.5708" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-0.051269 0.0296 -0.03853" euler="0 0 2.6180" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-0.051269 -0.0296 -0.03853" euler="0 0 3.6652" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-1.0875e-17 -0.0592 -0.03853" euler="0 0 4.7124" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="0.051269 -0.0296 -0.03853" euler="0 0 5.7596" material="dark"/>
+            <geom class="livery" type="cylinder" size="0.060384 0.008" pos="0 0 -0.1591" material="steel"/>
+            <geom class="livery" type="cylinder" size="0.04736 0.012" pos="0 0 -0.1771" material="steel"/>
+            <geom class="livery" type="cylinder" size="0.039072 0.002" pos="0 0 -0.1891" material="dark"/>
+            <site name="l_sole" type="cylinder" size="0.06216 0.01" pos="0 0 -0.2428"/>
+            <site name="nozzle_l_pod_leg" pos="0 0 -0.1671"/>
+            <body name="l_fan_leg" pos="0 0 -0.0946">
+              <joint name="l_pod_leg_vec_x" axis="1 0 0" range="-0.24435 0.24435" armature="0.01"/>
+              <joint name="l_pod_leg_vec_y" axis="0 1 0" range="-0.24435 0.24435" armature="0.01"/>
+              <geom name="l_fan_leg_edf_unit" class="internal" type="cylinder" size="0.04625 0.05" pos="0 0 0" mass="0.45"/>
+              <geom name="l_fan_leg_gimbal_ring_bearings" class="shell" type="cylinder" size="0.04925 0.006" pos="0 0 0" mass="0.14878"/>
+              <geom name="l_fan_leg_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.029939"/>
+              <site name="thrust_l_pod_leg" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="l_shoulder" pos="0 0.09856 0.253">
+        <joint name="l_shoulder_pitch" axis="0 1 0" range="-2.618 1.0472" armature="0.01"/>
+        <geom name="l_shoulder_servo_shoulder_roll" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 0 0" mass="0.0745"/>
+        <geom name="l_shoulder_shoulder_cap" class="shell" type="sphere" size="0.0264" pos="0 0 0" mass="0.025143" material="blue"/>
+        <geom name="l_shoulder_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.0049821"/>
+        <body name="l_upper_arm" pos="0 0 0">
+          <joint name="l_shoulder_roll" axis="1 0 0" range="-0.17453 1.9199" armature="0.01"/>
+          <geom name="l_upper_arm_upper_arm_shell" class="shell" type="capsule" size="0.01936 0.052272" pos="0 0 -0.0726" mass="0.033916"/>
+          <geom name="l_upper_arm_servo_elbow" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 0 -0.12342" mass="0.0745"/>
+          <geom name="l_upper_arm_wire_arm" class="internal" type="capsule" size="0.006 0.05082" pos="0 0 -0.0726" mass="0.06171"/>
+          <geom name="l_upper_arm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.0085063"/>
+          <geom class="livery" type="cylinder" size="0.020134 0.0031363" pos="0 0 -0.04385" material="red"/>
+          <geom class="livery" type="cylinder" size="0.020134 0.0031363" pos="0 0 -0.054305" material="blue"/>
+          <body name="l_forearm" pos="0 0 -0.1452">
+            <joint name="l_elbow" axis="0 1 0" range="-2.2689 0" armature="0.01"/>
+            <geom name="l_forearm_elbow_yoke" class="shell" type="sphere" size="0.02112" pos="0 0 0" mass="0.018857" material="steel"/>
+            <geom name="l_forearm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.00094286"/>
+            <body name="l_pod_arm" pos="0 0 -0.1122">
+              <joint name="l_pod_arm_vec_y" axis="0 1 0" range="-0.34907 0.34907" armature="0.01"/>
+              <geom name="l_pod_arm_pod_shell" class="shell" type="cylinder" size="0.0592 0.0858" pos="0 0 0" mass="0.15102"/>
+              <geom name="l_pod_arm_edf_unit" class="internal" type="cylinder" size="0.04625 0.05" pos="0 0 0.0088" mass="0.45"/>
+              <geom name="l_pod_arm_esc" class="internal" type="box" size="0.017 0.01 0.038" pos="0.03256 0 0.0288" mass="0.18"/>
+              <geom name="l_pod_arm_inlet_guard" class="shell" type="cylinder" size="0.05328 0.002" pos="0 0 0.0818" mass="0.019837"/>
+              <geom name="l_pod_arm_gimbal_ring_bearings" class="shell" type="cylinder" size="0.060384 0.006" pos="0 0 0" mass="0.074388"/>
+              <geom name="l_pod_arm_gimbal_servo_y" class="internal" type="box" size="0.014 0.017 0.023" pos="-0.02368 0 0.0508" mass="0.0745"/>
+              <geom name="l_pod_arm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.047487"/>
+              <geom class="livery" type="cylinder" size="0.05991 0.00858" pos="0 0 0.037752" material="red"/>
+              <geom class="livery" type="cylinder" size="0.05991 0.00429" pos="0 0 0.01716" material="blue"/>
+              <geom class="livery" type="cylinder" size="0.050912 0.003" pos="0 0 0.0868" material="dark"/>
+              <geom class="livery" type="cylinder" size="0.060976 0.005148" pos="0 0 0.080652" material="steel"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="0.051269 0.0296 0.061776" euler="0 0 0.5236" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="3.625e-18 0.0592 0.061776" euler="0 0 1.5708" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-0.051269 0.0296 0.061776" euler="0 0 2.6180" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-0.051269 -0.0296 0.061776" euler="0 0 3.6652" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-1.0875e-17 -0.0592 0.061776" euler="0 0 4.7124" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="0.051269 -0.0296 0.061776" euler="0 0 5.7596" material="dark"/>
+              <geom class="livery" type="cylinder" size="0.04736 0.010296" pos="0 0 -0.092664" material="steel"/>
+              <geom class="livery" type="cylinder" size="0.039072 0.002" pos="0 0 -0.10296" material="dark"/>
+              <site name="nozzle_l_pod_arm" pos="0 0 -0.10296"/>
+              <site name="thrust_l_pod_arm" pos="0 0 0.0088"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="r_hip" pos="0 -0.06336 -0.0176">
+        <joint name="r_hip_roll" axis="-1 0 0" range="-0.43633 0.61087" armature="0.04"/>
+        <geom name="r_hip_servo_hip_pitch" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 0 0" mass="0.33"/>
+        <geom name="r_hip_hip_bracket" class="shell" type="sphere" size="0.02464" pos="0 0 0" mass="0.037714" material="steel"/>
+        <geom name="r_hip_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.018386"/>
+        <body name="r_thigh" pos="0 0 0">
+          <joint name="r_hip_pitch" axis="0 1 0" range="-1.7453 0.5236" armature="0.04"/>
+          <geom name="r_thigh_thigh_shell" class="shell" type="capsule" size="0.02992 0.080256" pos="0 0 -0.10138" mass="0.076922"/>
+          <geom name="r_thigh_servo_knee" class="internal" type="box" size="0.0335 0.022 0.02925" pos="0 0 -0.18163" mass="0.33"/>
+          <geom name="r_thigh_wire_leg_thigh" class="internal" type="capsule" size="0.006 0.08448" pos="0.01 0 -0.1056" mass="0.062696"/>
+          <geom name="r_thigh_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.023481"/>
+          <geom class="livery" type="cylinder" size="0.031117 0.0048154" pos="0 0 -0.057235" material="red"/>
+          <geom class="livery" type="cylinder" size="0.031117 0.0048154" pos="0 0 -0.073286" material="blue"/>
+          <body name="r_pod_leg" pos="0 0 -0.2112">
+            <joint name="r_knee" axis="0 1 0" range="0 2.2689" armature="0.04"/>
+            <geom name="r_pod_leg_knee_yoke" class="shell" type="sphere" size="0.02288" pos="0 0 -0.00352" mass="0.050286" material="steel"/>
+            <geom name="r_pod_leg_pod_shell" class="shell" type="cylinder" size="0.0592 0.07475" pos="0 0 -0.09235" mass="0.15445"/>
+            <geom name="r_pod_leg_intake_bellmouth_guard" class="shell" type="cylinder" size="0.05328 0.004" pos="0 0 -0.0216" mass="0.049592"/>
+            <geom name="r_pod_leg_esc" class="internal" type="box" size="0.017 0.01 0.038" pos="-0.03552 0 -0.0846" mass="0.18"/>
+            <geom name="r_pod_leg_skirt_ring" class="shell" type="cylinder" size="0.0592 0.006" pos="0 0 -0.214" mass="0.018367" material="steel"/>
+            <geom name="r_pod_leg_skirt_strut_0" class="shell" type="box" size="0.004 0.009 0.02645" pos="0.040186 0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="r_pod_leg_skirt_strut_1" class="shell" type="box" size="0.004 0.009 0.02645" pos="-0.040186 0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="r_pod_leg_skirt_strut_2" class="shell" type="box" size="0.004 0.009 0.02645" pos="-0.040186 -0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="r_pod_leg_skirt_strut_3" class="shell" type="box" size="0.004 0.009 0.02645" pos="0.040186 -0.040186 -0.19355" mass="0.0097953"/>
+            <geom name="r_pod_leg_gimbal_servo_x" class="internal" type="box" size="0.014 0.017 0.023" pos="0.036704 0 -0.0746" mass="0.0745"/>
+            <geom name="r_pod_leg_gimbal_servo_y" class="internal" type="box" size="0.014 0.017 0.023" pos="0 0.036704 -0.0746" mass="0.0745"/>
+            <geom name="r_pod_leg_pad_0" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.050912 0 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_0" class="shell" type="sphere" size="0.008" pos="0.050912 0 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_1" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.036 0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_1" class="shell" type="sphere" size="0.008" pos="0.036 0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_2" class="shell" type="box" size="0.008 0.008 0.0114" pos="3.1175e-18 0.050912 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_2" class="shell" type="sphere" size="0.008" pos="3.1175e-18 0.050912 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_3" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.036 0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_3" class="shell" type="sphere" size="0.008" pos="-0.036 0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_4" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.050912 6.2349e-18 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_4" class="shell" type="sphere" size="0.008" pos="-0.050912 6.2349e-18 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_5" class="shell" type="box" size="0.008 0.008 0.0114" pos="-0.036 -0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_5" class="shell" type="sphere" size="0.008" pos="-0.036 -0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_6" class="shell" type="box" size="0.008 0.008 0.0114" pos="-9.3524e-18 -0.050912 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_6" class="shell" type="sphere" size="0.008" pos="-9.3524e-18 -0.050912 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_pad_7" class="shell" type="box" size="0.008 0.008 0.0114" pos="0.036 -0.036 -0.2314" mass="0.004" material="dark" contype="0" conaffinity="0"/>
+            <geom name="r_pod_leg_padtip_7" class="shell" type="sphere" size="0.008" pos="0.036 -0.036 -0.2428" mass="0.002" material="dark" friction="0.9 0.02 0.001"/>
+            <geom name="r_pod_leg_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.034444"/>
+            <geom class="livery" type="cylinder" size="0.05991 0.007475" pos="0 0 -0.05946" material="red"/>
+            <geom class="livery" type="cylinder" size="0.05991 0.0037375" pos="0 0 -0.0774" material="blue"/>
+            <geom class="livery" type="cylinder" size="0.050912 0.003" pos="0 0 -0.0166" material="dark"/>
+            <geom class="livery" type="cylinder" size="0.060976 0.004485" pos="0 0 -0.022085" material="steel"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="0.051269 0.0296 -0.03853" euler="0 0 0.5236" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="3.625e-18 0.0592 -0.03853" euler="0 0 1.5708" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-0.051269 0.0296 -0.03853" euler="0 0 2.6180" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-0.051269 -0.0296 -0.03853" euler="0 0 3.6652" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="-1.0875e-17 -0.0592 -0.03853" euler="0 0 4.7124" material="dark"/>
+            <geom class="livery" type="box" size="0.002 0.016576 0.010465" pos="0.051269 -0.0296 -0.03853" euler="0 0 5.7596" material="dark"/>
+            <geom class="livery" type="cylinder" size="0.060384 0.008" pos="0 0 -0.1591" material="steel"/>
+            <geom class="livery" type="cylinder" size="0.04736 0.012" pos="0 0 -0.1771" material="steel"/>
+            <geom class="livery" type="cylinder" size="0.039072 0.002" pos="0 0 -0.1891" material="dark"/>
+            <site name="r_sole" type="cylinder" size="0.06216 0.01" pos="0 0 -0.2428"/>
+            <site name="nozzle_r_pod_leg" pos="0 0 -0.1671"/>
+            <body name="r_fan_leg" pos="0 0 -0.0946">
+              <joint name="r_pod_leg_vec_x" axis="1 0 0" range="-0.24435 0.24435" armature="0.01"/>
+              <joint name="r_pod_leg_vec_y" axis="0 1 0" range="-0.24435 0.24435" armature="0.01"/>
+              <geom name="r_fan_leg_edf_unit" class="internal" type="cylinder" size="0.04625 0.05" pos="0 0 0" mass="0.45"/>
+              <geom name="r_fan_leg_gimbal_ring_bearings" class="shell" type="cylinder" size="0.04925 0.006" pos="0 0 0" mass="0.14878"/>
+              <geom name="r_fan_leg_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.029939"/>
+              <site name="thrust_r_pod_leg" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="r_shoulder" pos="0 -0.09856 0.253">
+        <joint name="r_shoulder_pitch" axis="0 1 0" range="-2.618 1.0472" armature="0.01"/>
+        <geom name="r_shoulder_servo_shoulder_roll" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 0 0" mass="0.0745"/>
+        <geom name="r_shoulder_shoulder_cap" class="shell" type="sphere" size="0.0264" pos="0 0 0" mass="0.025143" material="blue"/>
+        <geom name="r_shoulder_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.0049821"/>
+        <body name="r_upper_arm" pos="0 0 0">
+          <joint name="r_shoulder_roll" axis="-1 0 0" range="-0.17453 1.9199" armature="0.01"/>
+          <geom name="r_upper_arm_upper_arm_shell" class="shell" type="capsule" size="0.01936 0.052272" pos="0 0 -0.0726" mass="0.033916"/>
+          <geom name="r_upper_arm_servo_elbow" class="internal" type="box" size="0.01236 0.0175 0.02261" pos="0 0 -0.12342" mass="0.0745"/>
+          <geom name="r_upper_arm_wire_arm" class="internal" type="capsule" size="0.006 0.05082" pos="0 0 -0.0726" mass="0.06171"/>
+          <geom name="r_upper_arm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.0085063"/>
+          <geom class="livery" type="cylinder" size="0.020134 0.0031363" pos="0 0 -0.04385" material="red"/>
+          <geom class="livery" type="cylinder" size="0.020134 0.0031363" pos="0 0 -0.054305" material="blue"/>
+          <body name="r_forearm" pos="0 0 -0.1452">
+            <joint name="r_elbow" axis="0 1 0" range="-2.2689 0" armature="0.01"/>
+            <geom name="r_forearm_elbow_yoke" class="shell" type="sphere" size="0.02112" pos="0 0 0" mass="0.018857" material="steel"/>
+            <geom name="r_forearm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.00094286"/>
+            <body name="r_pod_arm" pos="0 0 -0.1122">
+              <joint name="r_pod_arm_vec_y" axis="0 1 0" range="-0.34907 0.34907" armature="0.01"/>
+              <geom name="r_pod_arm_pod_shell" class="shell" type="cylinder" size="0.0592 0.0858" pos="0 0 0" mass="0.15102"/>
+              <geom name="r_pod_arm_edf_unit" class="internal" type="cylinder" size="0.04625 0.05" pos="0 0 0.0088" mass="0.45"/>
+              <geom name="r_pod_arm_esc" class="internal" type="box" size="0.017 0.01 0.038" pos="0.03256 0 0.0288" mass="0.18"/>
+              <geom name="r_pod_arm_inlet_guard" class="shell" type="cylinder" size="0.05328 0.002" pos="0 0 0.0818" mass="0.019837"/>
+              <geom name="r_pod_arm_gimbal_ring_bearings" class="shell" type="cylinder" size="0.060384 0.006" pos="0 0 0" mass="0.074388"/>
+              <geom name="r_pod_arm_gimbal_servo_y" class="internal" type="box" size="0.014 0.017 0.023" pos="-0.02368 0 0.0508" mass="0.0745"/>
+              <geom name="r_pod_arm_fasteners_bearings" class="internal" type="sphere" size="0.005" pos="0 0 0" mass="0.047487"/>
+              <geom class="livery" type="cylinder" size="0.05991 0.00858" pos="0 0 0.037752" material="red"/>
+              <geom class="livery" type="cylinder" size="0.05991 0.00429" pos="0 0 0.01716" material="blue"/>
+              <geom class="livery" type="cylinder" size="0.050912 0.003" pos="0 0 0.0868" material="dark"/>
+              <geom class="livery" type="cylinder" size="0.060976 0.005148" pos="0 0 0.080652" material="steel"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="0.051269 0.0296 0.061776" euler="0 0 0.5236" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="3.625e-18 0.0592 0.061776" euler="0 0 1.5708" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-0.051269 0.0296 0.061776" euler="0 0 2.6180" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-0.051269 -0.0296 0.061776" euler="0 0 3.6652" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="-1.0875e-17 -0.0592 0.061776" euler="0 0 4.7124" material="dark"/>
+              <geom class="livery" type="box" size="0.002 0.016576 0.012012" pos="0.051269 -0.0296 0.061776" euler="0 0 5.7596" material="dark"/>
+              <geom class="livery" type="cylinder" size="0.04736 0.010296" pos="0 0 -0.092664" material="steel"/>
+              <geom class="livery" type="cylinder" size="0.039072 0.002" pos="0 0 -0.10296" material="dark"/>
+              <site name="nozzle_r_pod_arm" pos="0 0 -0.10296"/>
+              <site name="thrust_r_pod_arm" pos="0 0 0.0088"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <contact><exclude body1="torso" body2="l_thigh"/><exclude body1="torso" body2="r_thigh"/></contact>
+  <actuator>
+    <position name="l_hip_roll" joint="l_hip_roll" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="l_hip_pitch" joint="l_hip_pitch" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="l_knee" joint="l_knee" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="l_pod_leg_vec_x" joint="l_pod_leg_vec_x" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="l_pod_leg_vec_y" joint="l_pod_leg_vec_y" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="l_shoulder_pitch" joint="l_shoulder_pitch" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="l_shoulder_roll" joint="l_shoulder_roll" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="l_elbow" joint="l_elbow" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="l_pod_arm_vec_y" joint="l_pod_arm_vec_y" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_hip_roll" joint="r_hip_roll" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="r_hip_pitch" joint="r_hip_pitch" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="r_knee" joint="r_knee" kp="554.4" kv="33.26" forcerange="-13.86 13.86" inheritrange="1"/>
+    <position name="r_pod_leg_vec_x" joint="r_pod_leg_vec_x" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_pod_leg_vec_y" joint="r_pod_leg_vec_y" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_shoulder_pitch" joint="r_shoulder_pitch" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_shoulder_roll" joint="r_shoulder_roll" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_elbow" joint="r_elbow" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <position name="r_pod_arm_vec_y" joint="r_pod_arm_vec_y" kp="137.2" kv="8.232" forcerange="-3.43 3.43" inheritrange="1"/>
+    <general name="thrust_l_pod_arm" site="thrust_l_pod_arm" gear="0 0 1 0 0 0" dyntype="filter" dynprm="0.16" ctrlrange="0 44.61" gainprm="1" biasprm="0 0 0"/>
+    <general name="thrust_r_pod_arm" site="thrust_r_pod_arm" gear="0 0 1 0 0 0" dyntype="filter" dynprm="0.16" ctrlrange="0 44.61" gainprm="1" biasprm="0 0 0"/>
+    <general name="thrust_l_pod_leg" site="thrust_l_pod_leg" gear="0 0 1 0 0 0" dyntype="filter" dynprm="0.16" ctrlrange="0 44.61" gainprm="1" biasprm="0 0 0"/>
+    <general name="thrust_r_pod_leg" site="thrust_r_pod_leg" gear="0 0 1 0 0 0" dyntype="filter" dynprm="0.16" ctrlrange="0 44.61" gainprm="1" biasprm="0 0 0"/>
+  </actuator>
+  <sensor>
+    <gyro name="gyro" site="imu" noise="0.005"/>
+    <accelerometer name="accel" site="imu" noise="0.05"/>
+    <framequat name="quat" objtype="site" objname="imu"/>
+    <touch name="l_foot_touch" site="l_sole"/>
+    <touch name="r_foot_touch" site="r_sole"/>
+  </sensor>
+</mujoco>

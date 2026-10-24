@@ -1,0 +1,88 @@
+# Candidate scales. Height is set so the pod OD/height ratio stays ~0.12-0.15
+# (the "oversized pod" look) while pods fit the forearm and shank.
+# vectoring: hinge axes of the pod gimbal in the pod frame (x = lateral tilt -> Fy, y = fore/aft tilt -> Fx)
+# Legs use a 2-axis cartridge gimbal inside the fixed shin shell (range set by bore clearance, see
+# design.leg_gimbal_range). With shin pods coaxial under the knee, the arm and leg pods share a frontal
+# plane, so differential thrust gives no pitch torque; leg fore/aft tilt about the long lever below the
+# COM supplies it. Layout study (E2 hardware): leg[x]: rank 5 in balanced pose; leg[y]: Fy only 4 N;
+# arm[x]+leg[y]: rank 5; leg[x,y]: rank 6, cond 6, pitch +/-4.7 N m (selected, +0.31 kg).
+
+A_55cm_fw64:
+  height_m: 0.55
+  edf: fw64_6s
+  esc: flyfun120_v5
+  battery: tattu_6s_6000_35c
+  pack_series: 1
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+B_68cm_jp70:
+  height_m: 0.68
+  edf: jp70_6s
+  esc: flyfun120_v5
+  battery: cnhl_6s_6000_65c
+  pack_series: 1
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+C_76cm_jp80:
+  height_m: 0.76
+  edf: jp80_6s
+  esc: flyfun120_v5
+  battery: cnhl_6s_6000_65c
+  pack_series: 1
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+D_88cm_jp90_8s:
+  height_m: 0.88
+  edf: jp90_8s
+  esc: flyfun120_v5
+  battery: generic_4s_5000_70c
+  pack_series: 2
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+D2_88cm_jp90_8s_2p:
+  height_m: 0.88
+  edf: jp90_8s
+  esc: flyfun120_v5
+  battery: generic_4s_5000_70c
+  pack_series: 2
+  pack_parallel: 2
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+E_88cm_jp90_12s:
+  height_m: 0.88
+  edf: jp90_12s
+  esc: flyfun110_hv_v5
+  battery: tattu_6s_6000_35c
+  pack_series: 2
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+F_96cm_jp105_12s:
+  height_m: 0.96
+  edf: jp105_12s
+  esc: flyfun110_hv_v5
+  battery: tattu_6s_6000_35c
+  pack_series: 2
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20
+
+E2_88cm_jp90_12s_65c:
+  height_m: 0.88
+  edf: jp90_12s
+  esc: flyfun110_hv_v5
+  battery: cnhl_6s_6000_65c
+  pack_series: 2
+  pack_parallel: 1
+  vectoring: {arm: [y], leg: [x, y]}
+  vector_range_deg: 20

@@ -1,0 +1,24 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 1.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.019999999552965164,
+ "thermal_ratio_max": 0.47827303409576416,
+ "success_rate": 1.0,
+ "sway_cm_mean": 1.0058457851409912,
+ "max_tilt_deg_p95": 3.249077558517456,
+ "task": "stand",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/m5_stand_v2_fric13/params.pkl",
+ "env_overrides": {
+  "episode_length": 1500,
+  "push.impulse": [
+   0.0,
+   0.15
+  ],
+  "sweep.friction": 1.3,
+  "naconmax": 6144
+ }
+}

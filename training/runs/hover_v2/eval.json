@@ -1,0 +1,23 @@
+{
+ "trials": 100,
+ "steps": 1000,
+ "dt": 0.02,
+ "no_fall_rate": 0.43,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.34099990129470825,
+ "thermal_ratio_max": 0.837791383266449,
+ "success_rate": 0.01,
+ "alt_err_rms_m": 1.1491740942001343,
+ "tilt_deg_p95": 49.16904830932617,
+ "pos_drift_m_mean": 0.5671250820159912,
+ "hover_power_kw": 9.030043601989746,
+ "est_flight_time_s": 79.65409851074219,
+ "task": "hover",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/hover_v2/params.pkl",
+ "env_overrides": {
+  "episode_length": 1000,
+  "push.enable": false,
+  "naconmax": 6144
+ }
+}

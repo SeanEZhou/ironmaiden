@@ -1,0 +1,27 @@
+{
+ "trials": 100,
+ "steps": 1500,
+ "dt": 0.02,
+ "no_fall_rate": 1.0,
+ "peak_actuator_ratio_max": 1.0,
+ "max_saturation_s_p95": 0.07999999821186066,
+ "thermal_ratio_max": 0.5612121224403381,
+ "success_rate": 1.0,
+ "sway_cm_mean": 15.148282051086426,
+ "max_tilt_deg_p95": 4.68760347366333,
+ "task": "stand",
+ "controller": "ppo",
+ "params": "/home/sezhou/ironmaiden/edf-humanoid/training/runs/stand_v2_push03/params.pkl",
+ "env_overrides": {
+  "episode_length": 1500,
+  "push.impulse": [
+   0.3,
+   0.3
+  ],
+  "push.interval": [
+   3.0,
+   4.0
+  ],
+  "naconmax": 6144
+ }
+}

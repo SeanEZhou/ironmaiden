@@ -1,0 +1,15 @@
+item,description,part,qty,unit_mass_g,unit_price_usd,status,source
+EDF + motor,JP Hobby 90mm 12-Blade EDF 12S Power System w/1080Kv Motor,JPH6007-104,4,450,299.99,verified,https://motionrc.com/products/jp-hobby-90mm-12-blade-edf-12s-power-system-w-1080kv-motor-jph6007-104
+ESC,Hobbywing FlyFun 110A HV V5 (6-14S),FlyFun-110A-HV-V5,4,180,200,verified,https://lindinger.at/en/RC-Electronics/Drive-Set/Speed-Controllers/HOBBYWING-FLYFUN-V5-110A-CONTROLLER-6-14S-SBEC/9759726
+Battery,Tattu 6000mAh 6S 35C LiPo,-,2,835,120,verified,https://www.getfpv.com/tattu-6000mah-6s-35c-lipo-battery.html
+Servo hip_roll,xh540_w270,XH540_W270,4,165,500,verified,https://emanual.robotis.com/docs/en/dxl/x/xh540-w270
+Servo hip_pitch,xh540_w270,XH540_W270,4,165,500,verified,https://emanual.robotis.com/docs/en/dxl/x/xh540-w270
+Servo knee,xh540_w270,XH540_W270,4,165,500,verified,https://emanual.robotis.com/docs/en/dxl/x/xh540-w270
+Servo shoulder_pitch,sts3250,STS3250,2,74.5,55,verified,https://aifitlab.com/products/feetech-sts3250-servo-motor
+Servo shoulder_roll,sts3250,STS3250,2,74.5,55,verified,https://aifitlab.com/products/feetech-sts3250-servo-motor
+Servo elbow,sts3250,STS3250,2,74.5,55,verified,https://aifitlab.com/products/feetech-sts3250-servo-motor
+Servo gimbal,sts3250,STS3250,4,74.5,55,verified,https://aifitlab.com/products/feetech-sts3250-servo-motor
+Flight controller,Matek H743-SLIM V3,H743-SLIM-V3,1,7,75,verified,https://www.getfpv.com/mateksys-h743-slim-v3-flight-controller.html
+Avionics misc,"RX, 12V BEC, servo bus bridge",-,1,70,80,assumption,
+Structure,"PETG shells 1.2mm, CF spars, bearings, fasteners",-,1,2862,350,assumption,
+Wiring,"8/10 AWG silicone, AS150/XT90, servo bus",-,1,389,0,assumption,
